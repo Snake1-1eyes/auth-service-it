@@ -1,0 +1,35 @@
+env: development
+log_level: info
+
+grpc:
+  host: 0.0.0.0
+  port: 50051
+  rate_limit: 5
+  rate_limit_window: 1s
+  timeout: 5s
+  max_conn_age: 5m
+
+gateway:
+  host: 0.0.0.0
+  port: 8080
+  rate_limit: 5
+  rate_limit_window: 1s
+  grpc_server_host: localhost
+  grpc_server_port: 50051
+  timeout: 10s
+
+swagger:
+  json_path: ./pkg/auth/auth.swagger.json
+
+postgres:
+  dsn: postgres://postgres:postgres@postgres:5432/auth?sslmode=disable
+  read_dsn: ""
+  max_open_conns: 50
+  min_conns: 25
+  conn_max_lifetime: 30m
+
+test_postgres:
+  user: postgres
+  password: postgres
+  db: test_db
+  port: "5432"
